@@ -10,6 +10,11 @@ run *ARGS:
 	just dont-fuck-my-build
 	cargo run {{ARGS}}
 
+# Run 'nix run' on the project
+nrun *ARGS:
+	just dont-fuck-my-build
+	nix run . -- {{ARGS}}
+
 # Run 'cargo watch' to run the project (auto-recompiles)
 watch *ARGS:
 	cargo watch -x "run -- {{ARGS}}"
