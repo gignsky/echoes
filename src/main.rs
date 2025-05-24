@@ -9,53 +9,17 @@ use clap::Parser;
 #[clap(author = "Maxwell Rupp", version, about)]
 /// Application configuration
 struct Args {
-    /// whether to be verbose
-    #[arg(short = 'v')]
-    verbose: bool,
-
-    /// an optional name to greet
+    /// a REQUIRED message to be passed as an argument
     #[arg()]
-    name: Option<String>,
+    message: Option<String>,
 }
 
 // Non-TUI Stuff
 fn main() {
     let args = Args::parse();
-    if args.verbose {
-        println!("DEBUG {args:?}");
-    }
-    println!(
-        "Hello {} (from echoes)!",
-        args.name.unwrap_or("world".to_string())
-    );
+    let message = match args.message {
+        Some(msg) => msg,
+        None => "No message provided".to_string(),
+    };
+    println!("{}", message);
 }
-
-// // TUI Stuff
-// fn main() -> Result<()> {
-//     color_eyre::install()?;
-//     let terminal = ratatui::init();
-//     let result = run(terminal);
-//     ratatui::restore();
-//     result
-// }
-
-// fn run(mut terminal: DefaultTerminal) -> Result<()> {
-//     loop {
-//         terminal.draw(render)?;
-//         if matches!(event::read()?, Event::Key(_)) {
-//             break Ok(());
-//         }
-//     }
-// }
-
-// fn render(frame: &mut Frame) {
-//     let args = Args::parse();
-//     if args.verbose {
-//         println!("DEBUG {args:?}");
-//     }
-//     let welcome_message = format!(
-//         "Hello {} (from echoes)!",
-//         args.name.unwrap_or("world".to_string())
-//     );
-//     frame.render_widget(welcome_message, frame.area());
-// }
