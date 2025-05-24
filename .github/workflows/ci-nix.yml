@@ -1,0 +1,24 @@
+name: "CI Nix"
+on:
+  # Run only when pushing to master branch, and making PRs
+  push:
+    branches:
+      - main
+      - develop
+      - release/*
+      - hotfix/*
+      - bugfix/*
+      
+  pull_request:
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Install omnix
+        run: nix --accept-flake-config profile install "github:juspay/omnix"
+      - run: om ci
