@@ -40,7 +40,7 @@
     "cSpell.customDictionaries": {
         "custom-dictionary-workspace": {
             "name": "custom-dictionary-workspace",
-            "path": "${workspaceFolder:justlogger}/.cspell/custom-dictionary-workspace.txt",
+            "path": "${workspaceFolder:echoes}/.cspell/custom-dictionary-workspace.txt",
             "addWords": true,
             "scope": "workspace"
         }

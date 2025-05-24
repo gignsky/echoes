@@ -40,7 +40,7 @@ jobs:
           ext=""
           if [[ "${{ matrix.target }}" == *windows* ]]; then ext=".exe"; fi
           mkdir -p dist
-          cp target/${{ matrix.target }}/release/justlogger$ext dist/justlogger-"$CURRENT_TAG"-${{ matrix.target }}$ext
+          cp target/${{ matrix.target }}/release/echoes$ext dist/echoes-"$CURRENT_TAG"-${{ matrix.target }}$ext
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

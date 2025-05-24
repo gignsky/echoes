@@ -1,13 +1,13 @@
 A template Rust project with fully functional and no-frills Nix support, as well as builtin VSCode configuration to get IDE experience without any manual setup (just [install direnv](https://nixos.asia/en/direnv), open in VSCode and accept the suggestions). It uses [crane](https://crane.dev/), via [rust-flake](https://github.com/juspay/rust-flake).
 
 > [!NOTE]
-> If you are looking for the original template based on [this blog post](https://srid.ca/rust-nix)'s use of `crate2nix`, browse from [this tag](https://github.com/srid/justlogger/tree/crate2nix). The evolution of this template can be gleaned from [releases](https://github.com/srid/justlogger/releases).
+> If you are looking for the original template based on [this blog post](https://srid.ca/rust-nix)'s use of `crate2nix`, browse from [this tag](https://github.com/srid/echoes/tree/crate2nix). The evolution of this template can be gleaned from [releases](https://github.com/srid/echoes/releases).
 
 ## Usage
 
 You can use [omnix](https://omnix.page/om/init.html)[^omnix] to initialize this template:
 ```
-nix --accept-flake-config run github:juspay/omnix -- init github:gignsky/justlogger -o ~/my-rust-project
+nix --accept-flake-config run github:juspay/omnix -- init github:gignsky/echoes -o ~/my-rust-project
 ```
 
 [^omnix]: If initializing manually, make sure to:
@@ -52,31 +52,31 @@ We also provide a [`justfile`](https://just.systems/) for Makefile'esque command
 
 ------------------------------ PRE-GEN README STARTS HERE FOR NON-TEMPLATE ---------------------------------------------[
    
-![CI Nix](https://github.com/gignsky/justlogger/actions/workflows/ci-nix.yml/badge.svg)](https://github.com/gignsky/justlogger/actions/workflows/ci-nix.yml)
-[![Docs](https://github.com/gignsky/justlogger/actions/workflows/docs.yml/badge.svg)](https://github.com/gignsky/justlogger/actions/workflows/docs.yml)
-[![Release](https://github.com/gignsky/justlogger/actions/workflows/release.yml/badge.svg)](https://github.com/gignsky/justlogger/actions/workflows/release.yml)
-[![Update README with --help Output](https://github.com/gignsky/justlogger/actions/workflows/help-to-readme.yml/badge.svg)](https://github.com/gignsky/justlogger/actions/workflows/help-to-readme.yml)
+![CI Nix](https://github.com/gignsky/echoes/actions/workflows/ci-nix.yml/badge.svg)](https://github.com/gignsky/echoes/actions/workflows/ci-nix.yml)
+[![Docs](https://github.com/gignsky/echoes/actions/workflows/docs.yml/badge.svg)](https://github.com/gignsky/echoes/actions/workflows/docs.yml)
+[![Release](https://github.com/gignsky/echoes/actions/workflows/release.yml/badge.svg)](https://github.com/gignsky/echoes/actions/workflows/release.yml)
+[![Update README with --help Output](https://github.com/gignsky/echoes/actions/workflows/help-to-readme.yml/badge.svg)](https://github.com/gignsky/echoes/actions/workflows/help-to-readme.yml)
 
 A command line utility written entirely in rust that creates tarballs from folders in the current working directory and optionally remove the folders that created those tarballs
 
 # Installation & Usage
 ### Run immediately without installing (using Nix)
-`$ nix run github:gignsky/justlogger -- {optional-arguments (i.e. --help)}`
+`$ nix run github:gignsky/echoes -- {optional-arguments (i.e. --help)}`
 
 ## Installation
 ### With Nix Shell (temporary installation in current shell)
-`$ nix shell github:gignsky/justlogger`
+`$ nix shell github:gignsky/echoes`
 
 ### With NixOS (using flakes)
 In your `flake.nix` file: 
-1. add `inputs.justlogger.url = "github:gignsky/justlogger";` to your inputs
+1. add `inputs.echoes.url = "github:gignsky/echoes";` to your inputs
 2. inside of your `environment.systemPackages` often defined under: `outputs.nixosConfigurations.{hostname}.nixpkgs.lib.nixosSystem.modules`
 3. add either:
-   1. `inputs.justlogger.packages.${system}.justlogger`
-   2. `inputs.justlogger.packages.${system}.default`
+   1. `inputs.echoes.packages.${system}.echoes`
+   2. `inputs.echoes.packages.${system}.default`
 
 ### Download the binary
-1. Navigate to https://github.com/gignsky/justlogger/releases
+1. Navigate to https://github.com/gignsky/echoes/releases
 2. Download the latest (or desired) release for your operating system
    1. As of the time of this writing only x86_64 binaries are compiled for GNU/Linux and windows
 3. if using Linux run `chmod +x ./{downloaded-binary}`
@@ -85,21 +85,21 @@ In your `flake.nix` file:
 
 ### Compile the binary yourself
 1. git clone this repository:
-   1. `$ git clone https://github.com/gignsky/justlogger.git`
+   1. `$ git clone https://github.com/gignsky/echoes.git`
 2. cd into the directory:
-   1. `$ cd justlogger`
+   1. `$ cd echoes`
 3. enter development environment:
    1. `$ nix develop`
 4. build binary with justfile (uses nix build command) or build with cargo
    1. `$ just build`
       1. nix build command
-      2. produces a binary in `./result/bin/justlogger`
+      2. produces a binary in `./result/bin/echoes`
    2. `$ cargo build`
       1. cargo build command (debug)
-      2. produces a debug binary in `./target/debug/justlogger`
+      2. produces a debug binary in `./target/debug/echoes`
    3. `$ cargo build --release`
       1. cargo build command (release)
-      2. produces a debug binary in `./target/release/justlogger`
+      2. produces a debug binary in `./target/release/echoes`
 5. in order to use this compiled binary in any location one must add the binary to their $PATH (this is OS specific and not within the scope of this README)
    1. NOTE: This is not an issue if installed using nix, whether that be flakes and NixOS or nix shell
 
@@ -109,13 +109,13 @@ In your `flake.nix` file:
 `$ ./{downloaded-binary} {optional-arguments (i.e. --help)}`
 
 ### When installed via Nix
-`$ justlogger {optional-arguments (i.e. --help)}`
+`$ echoes {optional-arguments (i.e. --help)}`
 
 ## Optional Arguments (automatically generated by github action)
 ```
 A simple Rust project using Nix
 
-Usage: justlogger [OPTIONS] [NAME]
+Usage: echoes [OPTIONS] [NAME]
 
 Arguments:
   [NAME]  an optional name to greet

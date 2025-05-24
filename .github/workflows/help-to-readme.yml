@@ -25,7 +25,7 @@ jobs:
         run: cargo build --release
 
       - name: Capture --help output
-        run: ./target/release/justlogger --help > help_output.txt
+        run: ./target/release/echoes --help > help_output.txt
 
       - name: Update README.md
         run: |

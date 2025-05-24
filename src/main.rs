@@ -25,7 +25,7 @@ fn main() {
         println!("DEBUG {args:?}");
     }
     println!(
-        "Hello {} (from justlogger)!",
+        "Hello {} (from echoes)!",
         args.name.unwrap_or("world".to_string())
     );
 }
@@ -54,7 +54,7 @@ fn main() {
 //         println!("DEBUG {args:?}");
 //     }
 //     let welcome_message = format!(
-//         "Hello {} (from justlogger)!",
+//         "Hello {} (from echoes)!",
 //         args.name.unwrap_or("world".to_string())
 //     );
 //     frame.render_widget(welcome_message, frame.area());

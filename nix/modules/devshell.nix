@@ -2,7 +2,7 @@
 {
   perSystem = { config, self', pkgs, lib, ... }: {
     devShells.default = pkgs.mkShell {
-      name = "justlogger-shell";
+      name = "echoes-shell";
       inputsFrom = [
         self'.devShells.rust
         config.treefmt.build.devShell
@@ -26,7 +26,7 @@
         inputs.dotfiles.packages.${system}.cargo-update
       ];
       shellHook = ''
-        echo "welcome to the rust development environment for the justlogger package" | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
+        echo "welcome to the rust development environment for the echoes package" | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
       '';
     };
   };
