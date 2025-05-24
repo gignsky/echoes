@@ -14,8 +14,8 @@
         bacon
         config.process-compose.cargo-doc-live.outputs.package
         nil
-        lolcat
-        wslu
+        inputs.nixpkgs-lolcat.legacyPackages.${system}.lolcat
+        # wslu
         cargo-generate
         lazygit
         gitflow

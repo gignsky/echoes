@@ -6,7 +6,7 @@
     inputs.process-compose-flake.flakeModule
     inputs.cargo-doc-live.flakeModule
   ];
-  perSystem = { config, self', pkgs, lib, ... }: {
+  perSystem = { config, self', pkgs, lib, system, ... }: {
     rust-project.crates."echoes".crane.args = {
       buildInputs = lib.optionals pkgs.stdenv.isDarwin (
         with pkgs.darwin.apple_sdk.frameworks; [
@@ -14,7 +14,15 @@
         ]
       );
 
+      nativeBuildInputs = [
+        inputs.nixpkgs-lolcat.legacyPackages.${system}.lolcat
+        pkgs.makeWrapper
+      ];
+
       postInstall = ''
+        echo "--- Version Info ---"
+        lolcat --version | lolcat
+
         echo "--- Contents of current directory AFTER installPhase ---"
         ls -lA .
         echo "--- Contents of target/release/ AFTER installPhase ---"
