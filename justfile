@@ -63,9 +63,38 @@ update-flake:
 update-flake-no-commit:
 	nix flake update
 
+# Build the project using Nix & Cargo
+buildr:
+	just clean
+	cargo build --release
+	nix build
+	quick-results
+
+# Build the project using Nix & Cargo
+build:
+	just clean
+	cargo build
+	nix build
+	quick-results
+
 # Build the project using Nix with the provided arguments
-build *ARGS:
+nbuild *ARGS:
 	nix build {{ ARGS }}
+	quick-results
+
+# Build the project using Cargo with the provided arguments
+cbuild *ARGS:
+	cargo build {{ ARGS }}
+	quick-results
+
+# Build the project using Nix with the provided arguments
+nbuildr *ARGS:
+	nix build {{ ARGS }}
+	quick-results
+
+# Build the project using Cargo with the provided arguments
+cbuildr *ARGS:
+	cargo build --release {{ ARGS }}
 	quick-results
 
 # Check the project using Nix flake and other tools
